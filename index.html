@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Waleed Elsayed Portfolio</title>
+<style>
+:root{
+  /* Layout idea: a strict 12-column grid on midnight indigo. Numbered sections, oversized serif headings,
+     hairline rules and label/value tables. A slow silk-wave motif sits behind the name; one periwinkle-silver accent. */
+  --bg:#12121F;
+  --bg-deep:#090911;
+  --panel:#1D1E31;
+  --panel2:#25273E;
+  --mid:#323450;
+  --mid2:#4A4E6A;
+  --ink:#E9EAF2;
+  --mute:#9A9EC4;
+  --accent:#B9BCE0;
+  --rule:rgba(154,158,196,0.22);
+  --rule-strong:rgba(185,188,224,0.5);
+  --display:"Century Gothic","CenturyGothic","AppleGothic","URW Gothic L",sans-serif;
+  --sans:"Century Gothic","CenturyGothic","AppleGothic","URW Gothic L",sans-serif;
+  --mono:"Century Gothic","CenturyGothic","AppleGothic","URW Gothic L",sans-serif;
+  --gap:24px;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{margin:0;background:var(--bg) linear-gradient(180deg,var(--bg) 0%,var(--bg) 72%,var(--bg-deep) 100%);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration-color:var(--mid2);text-underline-offset:4px;transition:color .25s ease}
+a:hover{color:var(--accent);text-decoration-color:var(--accent)}
+a:focus-visible,button:focus-visible{outline:1px solid var(--accent);outline-offset:4px}
+::selection{background:var(--mid2);color:var(--ink)}
+h1,h2,h3{font-family:var(--display);font-weight:400;margin:0;line-height:1.06;letter-spacing:-.015em;text-wrap:balance;overflow-wrap:anywhere}
+p{margin:0}
+.wrap{max-width:1440px;margin:0 auto;padding:0 clamp(20px,4.5vw,72px)}
+.grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--gap)}
+.micro{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--mute);font-weight:500;line-height:1.5}
+
+/* header */
+.top{position:sticky;top:0;z-index:10;background:rgba(18,18,31,0.94);border-bottom:1px solid var(--rule)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:56px;padding-top:8px;padding-bottom:8px}
+.mono{font-family:var(--display);font-size:20px;letter-spacing:.1em;text-decoration:none}
+.top nav{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:4px 28px;min-width:0}
+.top nav a{font-size:11px;letter-spacing:.22em;text-transform:uppercase;text-decoration:none;font-weight:500;padding:8px 0;color:var(--mute)}
+.top nav a:hover{color:var(--ink)}
+.mono{color:var(--accent)}
+
+/* hero */
+.hero{position:relative;overflow:hidden;padding:clamp(40px,7vw,104px) 0 clamp(40px,6vw,88px)}
+.hero .wrap{position:relative;z-index:1}
+.silk{position:absolute;inset:-6% -4%;width:108%;height:112%;z-index:0;pointer-events:none}
+.silk .a{animation:drift-a 34s ease-in-out infinite}
+.silk .b{animation:drift-b 46s ease-in-out infinite}
+@keyframes drift-a{0%,100%{transform:translate3d(0,0,0)}50%{transform:translate3d(-1.6%,1.4%,0)}}
+@keyframes drift-b{0%,100%{transform:translate3d(0,0,0)}50%{transform:translate3d(1.4%,-1.2%,0)}}
+.hero .txt{grid-column:1 / span 7;align-self:end;display:flex;flex-direction:column;gap:clamp(20px,2.6vw,36px)}
+.hero h1{font-size:clamp(40px,7vw,108px);line-height:1}
+.hero h1 small{display:inline;font-size:.34em;letter-spacing:.04em;color:var(--accent);white-space:nowrap}
+.hero .role{font-family:var(--display);font-size:clamp(19px,2.1vw,29px);line-height:1.25;font-weight:400}
+.hero .sub{max-width:44ch;color:var(--mute);font-size:17px}
+.hero figure{grid-column:9 / span 4;margin:0;align-self:end}
+.plate{padding:clamp(8px,1vw,14px);background:var(--panel);border:1px solid var(--rule)}
+.hero figure .ph{aspect-ratio:4/3;overflow:hidden;background:var(--panel)}
+.hero figure .ph img{display:block;width:100%;height:100%;object-fit:cover;object-position:center 24%}
+.hero figcaption{margin-top:12px;font-family:var(--mono);letter-spacing:.14em}
+
+/* stats */
+.stats{border-top:1px solid var(--rule-strong);border-bottom:1px solid var(--rule);background:var(--panel)}
+.stats .cell{grid-column:span 4;padding:28px 0 30px;display:flex;flex-direction:column;gap:10px;border-left:1px solid var(--rule);padding-left:var(--gap)}
+.stats .cell:first-child{border-left:0;padding-left:0}
+.stats b{font-family:var(--mono);font-weight:400;font-size:clamp(20px,2vw,30px);line-height:1.15;letter-spacing:-.01em}
+
+/* sections */
+.sec{padding:clamp(64px,9vw,136px) 0 0}
+.sec.alt{background:var(--panel);padding-bottom:clamp(64px,9vw,136px);margin-top:clamp(64px,9vw,136px);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.sec-head{align-items:end;padding-bottom:28px;border-bottom:1px solid var(--rule-strong);margin-bottom:clamp(28px,4vw,56px);row-gap:12px}
+.sec-head .no{grid-column:1 / span 2;font-family:var(--mono);font-size:clamp(22px,2.4vw,36px);font-weight:400;line-height:1;color:var(--accent);padding-bottom:.35em}
+.sec-head h2{grid-column:3 / span 10;font-size:clamp(34px,6vw,92px)}
+.profile p.lede{grid-column:3 / span 8;font-family:var(--display);font-weight:300;font-size:clamp(20px,2.3vw,32px);line-height:1.36}
+.profile .cols{grid-column:3 / span 9;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px var(--gap);margin-top:clamp(28px,4vw,52px)}
+.profile .cols p{max-width:56ch;color:#CFD1E4}
+
+/* filters */
+.filters{display:flex;flex-wrap:wrap;gap:6px 26px;margin-bottom:8px}
+.filters button{background:none;border:0;border-bottom:1px solid transparent;padding:12px 0 8px;min-height:44px;font:500 11px var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--mute);cursor:pointer}
+.filters button:hover{color:var(--ink)}
+.filters button[aria-pressed="true"]{color:var(--ink);border-bottom-color:var(--accent)}
+.count{margin:10px 0 0;font-family:var(--mono);letter-spacing:.14em}
+
+/* works */
+.work{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--gap);row-gap:20px;padding:clamp(28px,3.4vw,48px) 0;border-top:1px solid var(--rule);align-items:start}
+.work[hidden]{display:none}
+.w-no{grid-column:1 / span 2;font-family:var(--mono);font-size:clamp(15px,1.3vw,19px);font-weight:400;color:var(--accent);line-height:1;padding-top:6px;letter-spacing:.06em}
+.w-main{grid-column:3 / span 4;display:flex;flex-direction:column;gap:14px;min-width:0}
+.w-main h3{font-size:clamp(23px,2.5vw,37px);line-height:1.12}
+.w-img{grid-column:8 / span 5;margin:0;aspect-ratio:4/3;overflow:hidden;background:var(--panel)}
+.w-img img{display:block;width:100%;height:100%;object-fit:cover;object-position:center}
+.w-type{display:flex;flex-direction:column;justify-content:space-between;padding:20px;border:1px solid var(--rule);background:var(--panel);aspect-ratio:4/3}
+.w-type .big{font-family:var(--mono);font-weight:400;font-size:clamp(24px,2.6vw,40px);line-height:1;letter-spacing:-.02em}
+.rows{margin:6px 0 0;border-top:1px solid var(--rule)}
+.rows .row{display:grid;grid-template-columns:minmax(120px,38%) minmax(0,1fr);gap:16px;padding:9px 0;border-bottom:1px solid var(--rule)}
+.rows dt{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--mute);font-weight:500;padding-top:3px}
+.rows dd{margin:0;font-family:var(--mono);font-size:14px;line-height:1.55}
+.brief{font-family:var(--display);font-weight:400;font-size:clamp(15px,1.12vw,16.5px);line-height:1.62;color:#D8DAEC;max-width:48ch}
+.gal-btn{align-self:flex-start;display:inline-flex;align-items:center;gap:10px;background:none;border:0;border-bottom:1px solid var(--rule-strong);padding:12px 0 9px;margin-top:6px;min-height:44px;font:500 11px var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--accent);cursor:pointer;transition:color .25s ease,border-color .25s ease}
+.gal-btn:hover{color:var(--ink);border-bottom-color:var(--ink)}
+.gal-btn .gn{font-family:var(--mono);letter-spacing:.08em;color:var(--mute)}
+
+/* experience */
+.xp .item{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--gap);row-gap:8px;padding:26px 0;border-top:1px solid var(--rule)}
+.xp .item:first-child{border-top:0;padding-top:0}
+.xp .yr{grid-column:1 / span 2;font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);font-weight:500;padding-top:10px;font-variant-numeric:tabular-nums}
+.xp .what{grid-column:3 / span 5}
+.xp .what h3{font-size:clamp(20px,2vw,28px);line-height:1.18}
+.xp .what p{margin-top:8px;font-weight:500}
+.xp .note{grid-column:8 / span 5;color:var(--mute);padding-top:6px;max-width:52ch}
+
+/* credentials */
+.cred{row-gap:44px}
+.cred .col{grid-column:span 4;min-width:0}
+.cred h3{font-size:22px;margin-bottom:14px}
+.cred .rows .row{grid-template-columns:1fr;gap:2px}
+.cred .rows dd{font-size:13.5px}
+.cred .wide{grid-column:3 / span 8}
+.cred .wide p{font-family:var(--display);font-weight:400;font-size:clamp(17px,1.7vw,23px);line-height:1.42;margin-top:10px}
+
+/* contact */
+.contact{padding-bottom:clamp(56px,8vw,112px)}
+.contact .big{grid-column:1 / span 12;font-family:var(--display);font-weight:400;font-size:clamp(22px,4.3vw,64px);line-height:1.1;overflow-wrap:anywhere;text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:clamp(20px,3vw,40px);margin-bottom:8px}
+.contact .c{grid-column:span 4;padding-top:22px;display:flex;flex-direction:column;gap:6px;min-width:0;overflow-wrap:anywhere}
+.contact .c a,.contact .c span:not(.micro){font-family:var(--mono);font-size:14px}
+footer{border-top:1px solid var(--rule);background:var(--bg-deep)}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;padding-top:18px;padding-bottom:28px}
+
+/* gallery lightbox */
+.lb{position:fixed;inset:0;z-index:60;display:none;background:rgba(9,9,17,0.98)}
+.lb.on{display:block}
+.lb .stage{position:absolute;inset:60px 0 20px;display:flex;align-items:center;justify-content:center;touch-action:pan-y}
+.lb .stage img{width:100%;height:100%;object-fit:contain}
+.lb .bar{position:absolute;left:0;right:0;top:0;height:60px;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:0 clamp(14px,3vw,32px);border-bottom:1px solid var(--rule)}
+.lb .meta{display:flex;align-items:baseline;gap:18px;min-width:0}
+.lb .ctr{font-family:var(--mono);font-size:13px;letter-spacing:.1em;color:var(--accent);white-space:nowrap}
+.lb .ttl{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--mute);font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lb button{display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;background:rgba(18,18,31,0.72);border:1px solid var(--rule);color:var(--ink);cursor:pointer;transition:border-color .25s ease,color .25s ease}
+.lb button:hover{border-color:var(--accent);color:var(--accent)}
+.lb button svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.4}
+.lb .x{flex:none}
+.lb .pv,.lb .nx{position:absolute;top:50%;transform:translateY(-50%);z-index:2}
+.lb .pv{left:clamp(8px,2vw,24px)}
+.lb .nx{right:clamp(8px,2vw,24px)}
+body.locked{overflow:hidden}
+
+/* motion: only applied by script, only to elements below the first screen */
+.reveal.pre{opacity:0;transform:translateY(18px)}
+.reveal{transition:opacity .7s ease,transform .7s ease}
+
+@media (max-width:1020px){
+  .hero .txt{grid-column:1 / span 12}
+  .hero figure{grid-column:1 / span 6;margin-top:36px}
+  .sec-head .no{grid-column:1 / span 12}
+  .sec-head h2{grid-column:1 / span 12}
+  .profile p.lede,.profile .cols{grid-column:1 / span 12}
+  .w-no{grid-column:1 / span 12}
+  .w-main{grid-column:1 / span 7}
+  .w-img{grid-column:8 / span 5}
+  .xp .yr{grid-column:1 / span 12;padding-top:0}
+  .xp .what{grid-column:1 / span 6}
+  .xp .note{grid-column:7 / span 6}
+  .cred .col{grid-column:span 6}
+  .cred .wide{grid-column:1 / span 12}
+}
+@media (max-width:640px){
+  :root{--gap:16px}
+  .top nav{gap:0 16px}
+  .top nav a{letter-spacing:.16em;padding:5px 0}
+  .hero figure{grid-column:1 / span 9}
+  .stats .cell{grid-column:span 12;border-left:0;padding-left:0;padding-top:20px;padding-bottom:20px}
+  .stats .cell:nth-child(n+2){border-top:1px solid var(--rule)}
+  .profile .cols{grid-template-columns:1fr}
+  .w-main,.w-img{grid-column:1 / span 12}
+  .xp .what,.xp .note{grid-column:1 / span 12}
+  .cred .col{grid-column:span 12}
+  .contact .c{grid-column:span 12}
+  .rows .row{grid-template-columns:minmax(104px,40%) minmax(0,1fr)}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .reveal{transition:none}
+  .silk .a,.silk .b{animation:none}
+  .reveal.pre{opacity:1;transform:none}
+}
+
+/* --- copy deterrents --- */
+html,body{-webkit-user-select:none;-moz-user-select:none;user-select:none;-webkit-touch-callout:none}
+.contact .big,.contact .c a,.contact .c span:not(.micro){-webkit-user-select:text;-moz-user-select:text;user-select:text;-webkit-touch-callout:default}
+img,svg{-webkit-user-drag:none;user-drag:none;-webkit-touch-callout:none}
+.w-img img,.hero figure img,#lbi{pointer-events:none}
+.print-note{display:none}
+@media print{
+  body>*:not(.print-note){display:none !important}
+  body{background:#fff !important}
+  .print-note{display:block !important;padding:40px;font:16px/1.5 "Century Gothic","CenturyGothic","AppleGothic","URW Gothic L",sans-serif;color:#000}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="mono" href="#top" aria-label="Waleed Elsayed, back to top">WE</a>
+    <nav aria-label="Sections">
+      <a href="#profile">Profile</a>
+      <a href="#works">Works</a>
+      <a href="#experience">Experience</a>
+      <a href="#credentials">Credentials</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+<section class="hero">
+  <svg class="silk" viewBox="0 0 1440 760" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+    <defs>
+      <linearGradient id="s1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#323450" stop-opacity=".55"/><stop offset=".55" stop-color="#25273E" stop-opacity=".4"/><stop offset="1" stop-color="#12121F" stop-opacity="0"/></linearGradient>
+      <linearGradient id="s2" x1="1" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4A4E6A" stop-opacity=".34"/><stop offset=".5" stop-color="#25273E" stop-opacity=".42"/><stop offset="1" stop-color="#12121F" stop-opacity="0"/></linearGradient>
+      <linearGradient id="s3" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#25273E" stop-opacity="0"/><stop offset=".5" stop-color="#323450" stop-opacity=".5"/><stop offset="1" stop-color="#25273E" stop-opacity=".15"/></linearGradient>
+      <linearGradient id="e1" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#B9BCE0" stop-opacity="0"/><stop offset=".5" stop-color="#B9BCE0" stop-opacity=".34"/><stop offset="1" stop-color="#B9BCE0" stop-opacity="0"/></linearGradient>
+    </defs>
+    <g class="a">
+      <path d="M560,-80 C470,150 700,300 960,220 C1210,140 1330,-30 1600,10 L1600,-80 Z" fill="url(#s2)"/>
+      <path d="M560,-80 C470,150 700,300 960,220 C1210,140 1330,-30 1600,10" fill="none" stroke="url(#e1)" stroke-width="1.2"/>
+      <path d="M-160,470 C160,300 430,520 740,400 C1040,285 1200,90 1600,150 L1600,900 L-160,900 Z" fill="url(#s1)"/>
+      <path d="M-160,470 C160,300 430,520 740,400 C1040,285 1200,90 1600,150" fill="none" stroke="url(#e1)" stroke-width="1.2"/>
+    </g>
+    <g class="b">
+      <path d="M-160,640 C240,540 520,720 860,560 C1150,425 1290,280 1600,330 L1600,900 L-160,900 Z" fill="url(#s3)"/>
+      <path d="M-160,640 C240,540 520,720 860,560 C1150,425 1290,280 1600,330" fill="none" stroke="#4A4E6A" stroke-opacity=".5" stroke-width="1"/>
+      <path d="M-160,760 C300,700 640,800 980,690 C1240,605 1380,520 1600,540" fill="none" stroke="#4A4E6A" stroke-opacity=".28" stroke-width="1"/>
+    </g>
+  </svg>
+  <div class="wrap grid">
+    <div class="txt">
+      <p class="micro">Riyadh, Saudi Arabia</p>
+      <h1>Waleed Elsayed, <small>DBA</small></h1>
+      <p class="role">Real Estate Development Director</p>
+      <p class="sub">Design-led development, feasibility and product strategy.</p>
+    </div>
+    <figure>
+      <div class="ph"><img src="https://files.catbox.moe/a24jh2.webp" width="720" height="960" alt="Portrait of Dr. Waleed Elsayed"></div>
+      <figcaption class="micro">Dr. Waleed Elsayed</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="stats" aria-label="Key figures">
+  <div class="wrap grid">
+    <div class="cell"><b>28+</b><span class="micro">Years</span></div>
+    <div class="cell"><b>~1.8 million m²</b><span class="micro">Built-up area</span></div>
+    <div class="cell"><b>SAR 10 billion</b><span class="micro">Project value</span></div>
+  </div>
+</section>
+
+<section class="sec profile" id="profile">
+  <div class="wrap">
+    <div class="grid sec-head"><div class="no">01</div><h2>Profile</h2></div>
+    <div class="grid">
+      <p class="lede reveal">Real estate development executive across the full Saudi development lifecycle: market and feasibility studies, master planning, product definition, design management, procurement, approvals and delivery.</p>
+      <div class="cols reveal">
+        <p>Currently leads design and studies at Liwan, steering a mixed-use and residential pipeline including Najd Complex (550,000 m² BUA) and LiveIn Liwan (200,000 m² BUA).</p>
+        <p>Pairs architectural depth with business and investment credentials to align product, cost, risk and returns with Vision 2030 objectives.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="works">
+  <div class="wrap">
+    <div class="grid sec-head"><div class="no">02</div><h2>Selected Works</h2></div>
+    <div class="filters" role="group" aria-label="Filter works by typology">
+      <button type="button" data-f="all" aria-pressed="true">All</button>
+      <button type="button" data-f="mixed-use" aria-pressed="false">Mixed-Use</button>
+      <button type="button" data-f="administration" aria-pressed="false">Administration</button>
+      <button type="button" data-f="heritage" aria-pressed="false">Heritage</button>
+      <button type="button" data-f="residential" aria-pressed="false">Residential</button>
+      <button type="button" data-f="hospitality" aria-pressed="false">Hospitality</button>
+      <button type="button" data-f="landscape" aria-pressed="false">Landscape</button>
+    </div>
+    <p class="micro count" id="count" aria-live="polite">17 works</p>
+    <div id="worklist" style="margin-top:20px">
+<article class="work reveal" data-t="mixed-use"><div class="w-no">01</div><div class="w-main"><p class="micro">Mixed-Use <span aria-hidden="true">/</span> Riyadh</p><h3>LiveIn Liwan</h3><p class="brief">A 200,000 m² mixed-use district on a 45,000 m² site, weaving 470 residences with offices, hospitality, retail and F&amp;B around shared public amenities. The massing steps between street and courtyard scales, while two basement levels absorb 1,500 cars to keep the ground plane fully pedestrian.</p><dl class="rows"><div class="row"><dt>Land area</dt><dd>45,000 m²</dd></div><div class="row"><dt>Built-up area</dt><dd>200,000 m²</dd></div><div class="row"><dt>Residential units</dt><dd>470</dd></div><div class="row"><dt>Parking</dt><dd>1,500 spaces</dd></div><div class="row"><dt>Scope</dt><dd>Development &amp; Design Management</dd></div><div class="row"><dt>Employer</dt><dd>Liwan</dd></div></dl><button type="button" class="gal-btn" data-files="livein-1,livein-2,livein-3,livein-4,livein-5" data-title="LiveIn Liwan" aria-label="Open gallery for LiveIn Liwan, 5 images">Gallery <span aria-hidden="true">&rarr;</span> <span class="gn">05</span></button></div><figure class="w-img"><img src="https://files.catbox.moe/dikbx2.webp" width="1469" height="1141" loading="lazy" alt="Aerial view of LiveIn Liwan"></figure></article>
+<article class="work reveal" data-t="mixed-use"><div class="w-no">02</div><div class="w-main"><p class="micro">Mixed-Use <span aria-hidden="true">/</span> Riyadh</p><h3>Najd Complex</h3><p class="brief">Design management of a 550,000 m² composition, reconciling an extensive mixed-use programme with a coherent urban fabric: clear plot logic, legible circulation and one architectural language carried across all parcels.</p><dl class="rows"><div class="row"><dt>Built-up area</dt><dd>550,000 m²</dd></div><div class="row"><dt>Scope</dt><dd>Design Management</dd></div><div class="row"><dt>Employer</dt><dd>Liwan</dd></div></dl><button type="button" class="gal-btn" data-files="najd-1,najd-2,najd-3,najd-4,najd-5" data-title="Najd Complex" aria-label="Open gallery for Najd Complex, 5 images">Gallery <span aria-hidden="true">&rarr;</span> <span class="gn">05</span></button></div><figure class="w-img"><img src="https://files.catbox.moe/1w5y0h.webp" width="1600" height="898" loading="lazy" alt="Aerial view of the Najd Complex district"></figure></article>
+<article class="work reveal" data-t="mixed-use"><div class="w-no">03</div><div class="w-main"><p class="micro">Master Planning &amp; Feasibility <span aria-hidden="true">/</span> Riyadh</p><h3>Kingdom City</h3><p class="brief">A district-scale framework for 804,401 m² of built area on 222,090 m² of land. Plot subdivision, density distribution and massing envelopes were tested through iterative test-fits, balancing saleable efficiency against urban quality.</p><dl class="rows"><div class="row"><dt>Land area</dt><dd>222,090 m²</dd></div><div class="row"><dt>Built-up area</dt><dd>804,401 m²</dd></div><div class="row"><dt>Scope</dt><dd>Master Planning &amp; Feasibility</dd></div><div class="row"><dt>Employer</dt><dd>Liwan</dd></div></dl><button type="button" class="gal-btn" data-files="kingdom-1,kingdom-2,kingdom-3" data-title="Kingdom City" aria-label="Open gallery for Kingdom City, 3 images">Gallery <span aria-hidden="true">&rarr;</span> <span class="gn">03</span></button></div><figure class="w-img"><img src="https://files.catbox.moe/4uvsvu.webp" width="1800" height="921" loading="lazy" alt="Master-plan massing study for Kingdom City"></figure></article>
+<article class="work reveal" data-t="mixed-use"><div class="w-no">04</div><div class="w-main"><p class="micro">Mixed-Use <span aria-hidden="true">/</span> Riyadh</p><h3>Saudia Development</h3><p class="brief">A compact mixed-use scheme of 40,778 m². Axonometric massing studies tested courtyard configurations and street frontage to unlock the site&#x27;s full development value within planning limits.</p><dl class="rows"><div class="row"><dt>Land area</dt><dd>16,048 m²</dd></div><div class="row"><dt>Built-up area</dt><dd>40,778 m²</dd></div><div class="row"><dt>Scope</dt><dd>Design &amp; Feasibility</dd></div><div class="row"><dt>Employer</dt><dd>Liwan</dd></div></dl><button type="button" class="gal-btn" data-files="saudia-1,saudia-2,saudia-3,saudia-4" data-title="Saudia Development" aria-label="Open gallery for Saudia Development, 4 images">Gallery <span aria-hidden="true">&rarr;</span> <span class="gn">04</span></button></div><figure class="w-img"><img src="https://files.catbox.moe/na4cym.webp" width="1536" height="992" loading="lazy" alt="Aerial render of Saudia Development"></figure></article>
+<article class="work reveal" data-t="residential"><div class="w-no">05</div><div class="w-main"><p class="micro">Residential <span aria-hidden="true">/</span> Riyadh</p><h3>Laysen Valley Residence</h3><p class="brief">A residential community of 243 units over 62,700 m². Stepped mid-rise blocks open air and views between buildings; amenity cores anchor the scheme and 508 basement cars keep the landscape free of vehicles.</p><dl class="rows"><div class="row"><dt>Land area</dt><dd>17,400 m²</dd></div><div class="row"><dt>Built-up area</dt><dd>62,700 m²</dd></div><div class="row"><dt>Residential units</dt><dd>243</dd></div><div class="row"><dt>Scope</dt><dd>Design Management</dd></div><div class="row"><dt>Employer</dt><dd>Liwan</dd></div></dl><button type="button" class="gal-btn" data-files="laysen-1,laysen-2,laysen-3" data-title="Laysen Valley Residence" aria-label="Open gallery for Laysen Valley Residence, 3 images">Gallery <span aria-hidden="true">&rarr;</span> <span class="gn">03</span></button></div><figure class="w-img"><img src="https://files.catbox.moe/zdoq4t.webp" width="1470" height="1141" loading="lazy" alt="Street view of Laysen Valley Residence"></figure></article>
+<article class="work reveal" data-t="administration"><div class="w-no">06</div><div class="w-main"><p class="micro">Administration <span aria-hidden="true">/</span> Riyadh</p><h3>Ministry of Energy HQ</h3><p class="brief">A ministerial workplace across 20 floors, balancing protocol and openness: a representative majlis and reception sequence, cellular offices at the core, collaboration space at the glass, in a restrained palette of stone, timber and textile.</p><dl class="rows"><div class="row"><dt>Floors</dt><dd>20</dd></div><div class="row"><dt>Area</dt><dd>70,000 m²</dd></div><div class="row"><dt>Value</dt><dd>SAR 170M</dd></div><div class="row"><dt>Scope</dt><dd>Fit-out Design &amp; Technical Management</dd></div><div class="row"><dt>Employer</dt><dd>KCG</dd></div></dl><button type="button" class="gal-btn" data-files="energy-1,energy-2,energy-3,energy-4,energy-5" data-title="Ministry of Energy HQ" aria-label="Open gallery for Ministry of Energy HQ, 5 images">Gallery <span aria-hidden="true">&rarr;</span> <span class="gn">05</span></button></div><figure class="w-img"><img src="https://files.catbox.moe/fpyxop.webp" width="1468" height="825" loading="lazy" alt="Majlis lounge with city views at the Ministry of Energy headquarters"></figure></article>
+<article class="work reveal" data-t="administration"><div class="w-no">07</div><div class="w-main"><p class="micro">Administration <span aria-hidden="true">/</span> Riyadh</p><h3>Ministry of Transport &amp; Logistic Services HQ</h3><p class="brief">Fit-out and technical management for 27 floors of ministry workplace. Daylight-led planning draws light deep into the floor plate through glazed partitions, with conference and executive levels tuned to protocol use.</p><dl class="rows"><div class="row"><dt>Floors</dt><dd>27</dd></div><div class="row"><dt>Area</dt><dd>68,500 m²</dd></div><div class="row"><dt>Value</dt><dd>SAR 100M</dd></div><div class="row"><dt>Scope</dt><dd>Fit-out Design &amp; Technical Management</dd></div><div class="row"><dt>Employer</dt><dd>KCG</dd></div></dl><button type="button" class="gal-btn" data-files="transport-1,transport-2,transport-3,transport-4,transport-5" data-title="Ministry of Transport &amp; Logistic Services HQ" aria-label="Open gallery for Ministry of Transport &amp; Logistic Services HQ, 5 images">Gallery <span aria-hidden="true">&rarr;</span> <span class="gn">05</span></button></div><figure class="w-img"><img src="https://files.catbox.moe/kcexll.webp" width="1039" height="752" loading="lazy" alt="Office interior at the Ministry of Transport and Logistic Services headquarters"></figure></article>
+<article class="work reveal" data-t="administration"><div class="w-no">08</div><div class="w-main"><p class="micro">Administration <span aria-hidden="true">/</span> Riyadh</p><h3>NRRC HQ</h3><p class="brief">An L-shaped floor plate planned for a regulator: cellular where confidentiality demands, open where teams work together, shared rooms gathered at the knuckle. A quiet palette of white and timber keeps the offices calm.</p><dl class="rows"><div class="row"><dt>Floors</dt><dd>8</dd></div><div class="row"><dt>Area</dt><dd>17,000 m²</dd></div><div class="row"><dt>Scope</dt><dd>Fit-out Design &amp; Technical Management</dd></div><div class="row"><dt>Employer</dt><dd>KCG</dd></div></dl><button type="button" class="gal-btn" data-files="nrrc-1,nrrc-2,nrrc-3,nrrc-4" data-title="NRRC HQ" aria-label="Open gallery for NRRC HQ, 4 images">Gallery <span aria-hidden="true">&rarr;</span> <span class="gn">04</span></button></div><figure class="w-img"><img src="https://files.catbox.moe/8a2jky.webp" width="1456" height="1024" loading="lazy" alt="Rendered axonometric of the NRRC headquarters fit-out"></figure></article>
+<article class="work reveal" data-t="administration"><div class="w-no">09</div><div class="w-main"><p class="micro">Administration <span aria-hidden="true">/</span> Riyadh</p><h3>RCRC HQ Extension</h3><p class="brief">A 17,400 m² extension wrapped in curved sandstone, in dialogue with the civic architecture of Riyadh. Delivered through design development and construction supervision to full execution detail.</p><dl class="rows"><div class="row"><dt>Floors</dt><dd>4</dd></div><div class="row"><dt>Area</dt><dd>17,400 m²</dd></div><div class="row"><dt>Value</dt><dd>SAR 127M</dd></div><div class="row"><dt>Scope</dt><dd>Design Development &amp; Construction Supervision</dd></div><div class="row"><dt>Employer</dt><dd>Dar Al-Omran</dd></div></dl><button type="button" class="gal-btn" data-files="rcrc-1,rcrc-2,mbc-1,mbc-2" data-title="RCRC HQ Extension" aria-label="Open gallery for RCRC HQ Extension, 4 images">Gallery <span aria-hidden="true">&rarr;</span> <span class="gn">04</span></button></div><figure class="w-img"><img src="https://files.catbox.moe/9cx0w8.webp" width="1800" height="1009" loading="lazy" alt="Model of the RCRC headquarters extension with its curved stone wall"></figure></article>
+<article class="work reveal" data-t="administration"><div class="w-no">10</div><div class="w-main"><p class="micro">Administration <span aria-hidden="true">/</span> Riyadh</p><h3>MBC HQ</h3><p class="brief">A 20,000 m² headquarters for a national broadcaster. The inclined glass facade and planted forecourt give the building its civic identity; interiors were developed and supervised through construction.</p><dl class="rows"><div class="row"><dt>Floors</dt><dd>4</dd></div><div class="row"><dt>Area</dt><dd>20,000 m²</dd></div><div class="row"><dt>Value</dt><dd>SAR 120M</dd></div><div class="row"><dt>Scope</dt><dd>Design Development &amp; Construction Supervision</dd></div><div class="row"><dt>Employer</dt><dd>Dar Al-Omran</dd></div></dl><button type="button" class="gal-btn" data-files="mbc-3,mbc-4,mbc-5" data-title="MBC HQ" aria-label="Open gallery for MBC HQ, 3 images">Gallery <span aria-hidden="true">&rarr;</span> <span class="gn">03</span></button></div><figure class="w-img"><img src="https://files.catbox.moe/qy0tt5.webp" width="1500" height="626" loading="lazy" alt="Rendering of the MBC headquarters"></figure></article>
+<article class="work reveal" data-t="administration"><div class="w-no">11</div><div class="w-main"><p class="micro">Administration <span aria-hidden="true">/</span> Riyadh</p><h3>Ministry of Culture HQ</h3><p class="brief">A courtyard-centred composition in a desert-modern language: deep reveals, filtered light and shaded thresholds, developed from design intent to supervised construction.</p><dl class="rows"><div class="row"><dt>Floors</dt><dd>3</dd></div><div class="row"><dt>Area</dt><dd>10,000 m²</dd></div><div class="row"><dt>Value</dt><dd>SAR 60M</dd></div><div class="row"><dt>Scope</dt><dd>Design Development &amp; Construction Supervision</dd></div><div class="row"><dt>Employer</dt><dd>Dar Al-Omran</dd></div></dl><button type="button" class="gal-btn" data-files="culture-1,culture-2,culture-3,culture-4,culture-5" data-title="Ministry of Culture HQ" aria-label="Open gallery for Ministry of Culture HQ, 5 images">Gallery <span aria-hidden="true">&rarr;</span> <span class="gn">05</span></button></div><figure class="w-img"><img src="https://files.catbox.moe/0fnjeo.webp" width="1229" height="887" loading="lazy" alt="Aerial rendering of the Ministry of Culture headquarters"></figure></article>
+<article class="work reveal" data-t="administration"><div class="w-no">12</div><div class="w-main"><p class="micro">Administration <span aria-hidden="true">/</span> Riyadh</p><h3>Addiriyah Governorate</h3><p class="brief">A civic building in the Najdi tradition: massive walls, deep apertures and courtyards, detailed and supervised within the historic fabric of Addiriyah.</p><dl class="rows"><div class="row"><dt>Floors</dt><dd>2</dd></div><div class="row"><dt>Area</dt><dd>5,838 m²</dd></div><div class="row"><dt>Scope</dt><dd>Design Development &amp; Construction Supervision</dd></div><div class="row"><dt>Employer</dt><dd>Dar Al-Omran</dd></div></dl><button type="button" class="gal-btn" data-files="governorate-1,governorate-2,governorate-3,governorate-4,governorate-5" data-title="Addiriyah Governorate" aria-label="Open gallery for Addiriyah Governorate, 5 images">Gallery <span aria-hidden="true">&rarr;</span> <span class="gn">05</span></button></div><figure class="w-img"><img src="https://files.catbox.moe/y6tsxn.webp" width="1122" height="879" loading="lazy" alt="Atrium of the Addiriyah Governorate building with its patterned screen"></figure></article>
+<article class="work reveal" data-t="heritage"><div class="w-no">13</div><div class="w-main"><p class="micro">Heritage <span aria-hidden="true">/</span> Riyadh</p><h3>Addiriyah-Al-Bujairi Development</h3><p class="brief">Architecture and landscape for a 100,000 m² heritage destination. Mud-brick Najdi vocabulary, terraced palm groves and wadi-edge paths structure the visitor sequence toward historic Dir&#x27;iyah; delivered through design development and site supervision.</p><dl class="rows"><div class="row"><dt>Site</dt><dd>100,000 m²</dd></div><div class="row"><dt>Value</dt><dd>SAR 120M</dd></div><div class="row"><dt>Scope</dt><dd>Architecture, Landscape &amp; Construction Supervision</dd></div><div class="row"><dt>Employer</dt><dd>Dar Al-Omran</dd></div></dl><button type="button" class="gal-btn" data-files="bujairi-1,bujairi-2,bujairi-3,bujairi-4,bujairi-5" data-title="Addiriyah-Al-Bujairi Development" aria-label="Open gallery for Addiriyah-Al-Bujairi Development, 5 images">Gallery <span aria-hidden="true">&rarr;</span> <span class="gn">05</span></button></div><figure class="w-img"><img src="https://files.catbox.moe/xovfi1.webp" width="1175" height="1400" loading="lazy" alt="Aerial view of the Al-Bujairi district at dusk"></figure></article>
+<article class="work reveal" data-t="residential"><div class="w-no">14</div><div class="w-main"><p class="micro">Residential <span aria-hidden="true">/</span> Riyadh</p><h3>Al-Wasel Phase 1</h3><p class="brief">Architect of Record for 70 residences over 30,000 m²: twin mid-rise slabs on a shared amenity base, with efficient, repeatable unit plans and generous balconies.</p><dl class="rows"><div class="row"><dt>Built-up area</dt><dd>30,000 m²</dd></div><div class="row"><dt>Residential units</dt><dd>70</dd></div><div class="row"><dt>Scope</dt><dd>Architect of Record</dd></div><div class="row"><dt>Employer</dt><dd>Dar Al-Omran</dd></div></dl><button type="button" class="gal-btn" data-files="wasel-1,wasel-2" data-title="Al-Wasel Phase 1" aria-label="Open gallery for Al-Wasel Phase 1, 2 images">Gallery <span aria-hidden="true">&rarr;</span> <span class="gn">02</span></button></div><figure class="w-img"><img src="https://files.catbox.moe/lzn7jy.webp" width="1467" height="1141" loading="lazy" alt="Rendering of the Al-Wasel Phase 1 residential towers"></figure></article>
+<article class="work reveal" data-t="hospitality"><div class="w-no">15</div><div class="w-main"><p class="micro">Hospitality <span aria-hidden="true">/</span> Red Sea</p><h3>Shurayrah Island Hotels</h3><p class="brief">Fit-out technical management of guest-room mock-ups for the Red Sea island resorts. Natural timber, woven textures and wide sea-facing glass; the prototype rooms locked every detail and tolerance before island-wide rollout.</p><dl class="rows"><div class="row"><dt>Scope</dt><dd>Guest-room Mock-ups, Fit-out Technical Management</dd></div><div class="row"><dt>Employer</dt><dd>KCG</dd></div></dl><button type="button" class="gal-btn" data-files="shurayrah-1,shurayrah-2,shurayrah-3,shurayrah-4,shurayrah-5" data-title="Shurayrah Island Hotels" aria-label="Open gallery for Shurayrah Island Hotels, 5 images">Gallery <span aria-hidden="true">&rarr;</span> <span class="gn">05</span></button></div><figure class="w-img"><img src="https://files.catbox.moe/qnp4pp.webp" width="878" height="582" loading="lazy" alt="Sea-view guest-room render for a Shurayrah Island hotel"></figure></article>
+<article class="work reveal" data-t="landscape"><div class="w-no">16</div><div class="w-main"><p class="micro">Landscape <span aria-hidden="true">/</span> Riyadh</p><h3>Kindi Plaza, Diplomatic Quarter</h3><p class="brief">A shaded civic landscape for the Diplomatic Quarter: canopy structures, water-wise planting and stone paving composed in dialogue with the Quarter&#x27;s modernist fabric.</p><dl class="rows"><div class="row"><dt>Area</dt><dd>146,587 m²</dd></div><div class="row"><dt>Scope</dt><dd>Landscape Design</dd></div></dl><button type="button" class="gal-btn" data-files="kindi-1,kindi-2,kindi-3,kindi-4,kindi-5" data-title="Kindi Plaza, Diplomatic Quarter" aria-label="Open gallery for Kindi Plaza, Diplomatic Quarter, 5 images">Gallery <span aria-hidden="true">&rarr;</span> <span class="gn">05</span></button></div><figure class="w-img"><img src="https://files.catbox.moe/c6jhl1.webp" width="1800" height="852" loading="lazy" alt="Aerial view of the Kindi Plaza landscape"></figure></article>
+<article class="work reveal" data-t="landscape"><div class="w-no">17</div><div class="w-main"><p class="micro">Landscape <span aria-hidden="true">/</span> Riyadh and Cairo</p><h3>Al-Jedaie, Concord &amp; Mirage Compounds</h3><p class="brief">Resort-grade landscape for residential compounds in Riyadh and Cairo: lagoon pools, palm and shade-tree structure, and pedestrian loops tying housing clusters to communal green.</p><dl class="rows"><div class="row"><dt>Al-Jedaie Compound</dt><dd>Riyadh</dd></div><div class="row"><dt>Concord &amp; Mirage Compounds</dt><dd>Cairo</dd></div><div class="row"><dt>Scope</dt><dd>Landscape Design</dd></div></dl><button type="button" class="gal-btn" data-files="jedaie-1,jedaie-2,jedaie-3,jedaie-4,jedaie-5" data-title="Al-Jedaie, Concord &amp; Mirage Compounds" aria-label="Open gallery for Al-Jedaie, Concord &amp; Mirage Compounds, 5 images">Gallery <span aria-hidden="true">&rarr;</span> <span class="gn">05</span></button></div><figure class="w-img"><img src="https://files.catbox.moe/8tt968.webp" width="1645" height="1238" loading="lazy" alt="Hand-rendered landscape plan for Al-Jedaie Compound"></figure></article>
+    </div>
+  </div>
+</section>
+
+<section class="sec alt" id="experience">
+  <div class="wrap">
+    <div class="grid sec-head"><div class="no">03</div><h2>Experience</h2></div>
+    <div class="xp">
+      <div class="item reveal"><div class="yr">2022 to present</div><div class="what"><h3>Design &amp; Studies Director</h3><p>Liwan Real Estate Development</p></div><p class="note">Riyadh. Leads design and studies across a mixed-use and residential pipeline.</p></div>
+      <div class="item reveal"><div class="yr">2019 to 2022</div><div class="what"><h3>Technical Manager</h3><p>Kabbani Architecture Concepts, KCG / IKK Group</p></div><p class="note">Built a 55-person technical department.</p></div>
+      <div class="item reveal"><div class="yr">2006 to 2019</div><div class="what"><h3>Project Manager</h3><p>Dar Al-Omran, Rasem Badran</p></div><p class="note">Riyadh.</p></div>
+      <div class="item reveal"><div class="yr">2003 to 2006</div><div class="what"><h3>Senior Design Architect, Project Manager</h3><p>AKNAN</p></div><p class="note">Al-Madinah.</p></div>
+      <div class="item reveal"><div class="yr">1997 to 2003</div><div class="what"><h3>Earlier roles</h3><p>Al-Ahmadi, Yanbu. HEADS, Alexandria. Seoudy, Alexandria.</p></div><p class="note"></p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="credentials">
+  <div class="wrap">
+    <div class="grid sec-head"><div class="no">04</div><h2>Credentials</h2></div>
+    <div class="grid cred">
+      <div class="col reveal"><h3>Education</h3><dl class="rows">
+        <div class="row"><dt>2024</dt><dd>Doctor of Business Administration, IBAS, Zurich</dd></div>
+        <div class="row"><dt>2018</dt><dd>Professional Master in Project Management, UK</dd></div>
+        <div class="row"><dt>1997</dt><dd>Bachelor of Architecture, Alexandria University</dd></div>
+        <div class="row"><dt>2026</dt><dd>Oxford Real Estate Investment Programme, Saïd Business School</dd></div>
+        <div class="row"><dt>2025</dt><dd>Off-Plan Sale Developer Certificate, Saudi Real Estate Institute, No. 283770</dd></div>
+      </dl></div>
+      <div class="col reveal"><h3>Memberships</h3><dl class="rows">
+        <div class="row"><dt>Saudi Council of Engineers</dt><dd>No. 35260</dd></div>
+        <div class="row"><dt>American Institute of Architects</dt><dd>Member 40717605</dd></div>
+        <div class="row"><dt>Egyptian Engineers Syndicate</dt><dd>Member</dd></div>
+      </dl></div>
+      <div class="col reveal"><h3>Languages</h3><dl class="rows">
+        <div class="row"><dt>Arabic</dt><dd>Native</dd></div>
+        <div class="row"><dt>English</dt><dd>Fluent</dd></div>
+      </dl></div>
+      <div class="wide reveal"><span class="micro">Publication</span>
+        <p>The Influence of Sustainable Construction Practices on the Performance of Real Estate Development Firms in Urban Areas of the Middle East.</p>
+        <p class="micro" style="font-family:var(--sans);font-size:11px;margin-top:14px">ProQuest. ISBN 9798383581544</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec contact" id="contact">
+  <div class="wrap">
+    <div class="grid sec-head"><div class="no">05</div><h2>Contact</h2></div>
+    <div class="grid">
+      <a class="big reveal" href="mailto:w_elsayed@outlook.com">w_elsayed@outlook.com</a>
+      <div class="c reveal"><span class="micro">Location</span><span>Riyadh, Saudi Arabia</span></div>
+      <div class="c reveal"><span class="micro">Phone</span><a href="tel:+966563389990">+966 56 338 9990</a></div>
+      <div class="c reveal"><span class="micro">LinkedIn</span><a href="https://www.linkedin.com/in/dr-waleed-elsayed/">linkedin.com/in/dr-waleed-elsayed</a></div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap"><span class="micro">Waleed Elsayed, DBA</span><span class="micro">Riyadh, 2026 &nbsp;&middot;&nbsp; <a href="stats.html" style="color:inherit;text-decoration:none;border-bottom:1px dotted currentColor">Stats</a></span></div>
+</footer>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Project gallery">
+  <div class="bar">
+    <div class="meta"><span class="ctr" id="lbc" aria-live="polite">1 / 1</span><span class="ttl" id="lbt"></span></div>
+    <button type="button" class="x" id="lbx" aria-label="Close gallery"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 4l12 12M16 4L4 16"/></svg></button>
+  </div>
+  <button type="button" class="pv" id="lbp" aria-label="Previous image"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M12.5 3.5L6 10l6.5 6.5"/></svg></button>
+  <div class="stage" id="lbs"><img id="lbi" alt=""></div>
+  <button type="button" class="nx" id="lbn" aria-label="Next image"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7.5 3.5L14 10l-6.5 6.5"/></svg></button>
+</div>
+
+<script>
+(function(){
+  /* gallery lightbox: images are requested only when a gallery is opened */
+  var lb = document.getElementById('lb'), im = document.getElementById('lbi'), ctr = document.getElementById('lbc'),
+      ttl = document.getElementById('lbt'), stage = document.getElementById('lbs');
+  var files = [], cur = 0, title = '', opener = null;
+  const GALMAP = {"bujairi-1":"https://files.catbox.moe/afn7lr.webp","bujairi-2":"https://files.catbox.moe/6qsu6n.webp","bujairi-3":"https://files.catbox.moe/pry4o6.webp","bujairi-4":"https://files.catbox.moe/lib35q.webp","bujairi-5":"https://files.catbox.moe/2vcxe2.webp","culture-1":"https://files.catbox.moe/jw6fuv.webp","culture-2":"https://files.catbox.moe/x795lu.webp","culture-3":"https://files.catbox.moe/vimwpz.webp","culture-4":"https://files.catbox.moe/d60li0.webp","culture-5":"https://files.catbox.moe/7b0ogo.webp","energy-1":"https://files.catbox.moe/3q5gid.webp","energy-2":"https://files.catbox.moe/3hvjbx.webp","energy-3":"https://files.catbox.moe/uprp5o.webp","energy-4":"https://files.catbox.moe/ndkkfg.webp","energy-5":"https://files.catbox.moe/tfc5fa.webp","governorate-1":"https://files.catbox.moe/7wsj27.webp","governorate-2":"https://files.catbox.moe/hl4tur.webp","governorate-3":"https://files.catbox.moe/j54oxl.webp","governorate-4":"https://files.catbox.moe/pxqugp.webp","governorate-5":"https://files.catbox.moe/vzcpya.webp","jedaie-1":"https://files.catbox.moe/zn9jce.webp","jedaie-2":"https://files.catbox.moe/ruanpd.webp","jedaie-3":"https://files.catbox.moe/1mazlf.webp","jedaie-4":"https://files.catbox.moe/itahgl.webp","jedaie-5":"https://files.catbox.moe/6mlflj.webp","kindi-1":"https://files.catbox.moe/3lcf2c.webp","kindi-2":"https://files.catbox.moe/s9xcky.webp","kindi-3":"https://files.catbox.moe/lrtxxq.webp","kindi-4":"https://files.catbox.moe/d9nxg7.webp","kindi-5":"https://files.catbox.moe/dvzirf.webp","kingdom-1":"https://files.catbox.moe/ke97u0.webp","kingdom-2":"https://files.catbox.moe/a8efbv.webp","kingdom-3":"https://files.catbox.moe/1adkoa.webp","laysen-1":"https://files.catbox.moe/n4jfoq.webp","laysen-2":"https://files.catbox.moe/s9volu.webp","laysen-3":"https://files.catbox.moe/q6oz77.webp","livein-1":"https://files.catbox.moe/4zbuip.webp","livein-2":"https://files.catbox.moe/bgnssb.webp","livein-3":"https://files.catbox.moe/a3w8pb.webp","livein-4":"https://files.catbox.moe/iq1agv.webp","livein-5":"https://files.catbox.moe/2tpbvi.webp","mbc-1":"https://files.catbox.moe/5qjcel.webp","mbc-2":"https://files.catbox.moe/92fwmf.webp","mbc-3":"https://files.catbox.moe/vijmix.webp","mbc-4":"https://files.catbox.moe/g3zha0.webp","mbc-5":"https://files.catbox.moe/zp6ngf.webp","najd-1":"https://files.catbox.moe/c4046c.webp","najd-2":"https://files.catbox.moe/spwe5e.webp","najd-3":"https://files.catbox.moe/uwqs9b.webp","najd-4":"https://files.catbox.moe/rn36vy.webp","najd-5":"https://files.catbox.moe/9ca27d.webp","nrrc-1":"https://files.catbox.moe/3apunh.webp","nrrc-2":"https://files.catbox.moe/c1txjd.webp","nrrc-3":"https://files.catbox.moe/q0dfre.webp","nrrc-4":"https://files.catbox.moe/wzgbqh.webp","rcrc-1":"https://files.catbox.moe/7lh7a1.webp","rcrc-2":"https://files.catbox.moe/3c3qan.webp","saudia-1":"https://files.catbox.moe/7i5cqn.webp","saudia-2":"https://files.catbox.moe/en3tes.webp","saudia-3":"https://files.catbox.moe/9ejz8n.webp","saudia-4":"https://files.catbox.moe/qw5b85.webp","shurayrah-1":"https://files.catbox.moe/7i5rxs.webp","shurayrah-2":"https://files.catbox.moe/k32eqs.webp","shurayrah-3":"https://files.catbox.moe/tdn0y6.webp","shurayrah-4":"https://files.catbox.moe/8u30aa.webp","shurayrah-5":"https://files.catbox.moe/k6o4rp.webp","transport-1":"https://files.catbox.moe/942ysp.webp","transport-2":"https://files.catbox.moe/3neo0f.webp","transport-3":"https://files.catbox.moe/l4zqhm.webp","transport-4":"https://files.catbox.moe/0y6dxz.webp","transport-5":"https://files.catbox.moe/5xne61.webp","wasel-1":"https://files.catbox.moe/iaapis.webp","wasel-2":"https://files.catbox.moe/sqcj6g.webp"};
+  function src(i){ return GALMAP[files[i]]; }
+  function show(i){
+    cur = (i + files.length) % files.length;
+    im.src = src(cur);
+    im.alt = title + ', gallery image ' + (cur + 1) + ' of ' + files.length;
+    ctr.textContent = (cur + 1) + ' / ' + files.length;
+    if(files.length > 1){ var pre = new Image(); pre.src = src((cur + 1) % files.length); }
+  }
+  function openG(btn){
+    files = btn.getAttribute('data-files').split(','); title = btn.getAttribute('data-title'); opener = btn;
+    ttl.textContent = title;
+    var multi = files.length > 1;
+    document.getElementById('lbp').hidden = !multi; document.getElementById('lbn').hidden = !multi;
+    lb.classList.add('on'); document.body.classList.add('locked');
+    show(0); document.getElementById('lbx').focus();
+  }
+  function closeG(){
+    lb.classList.remove('on'); document.body.classList.remove('locked'); im.removeAttribute('src');
+    if(opener){ opener.focus(); }
+  }
+  Array.prototype.slice.call(document.querySelectorAll('.gal-btn')).forEach(function(b){
+    b.addEventListener('click', function(){ openG(b); });
+  });
+  document.getElementById('lbx').addEventListener('click', closeG);
+  document.getElementById('lbp').addEventListener('click', function(){ show(cur - 1); });
+  document.getElementById('lbn').addEventListener('click', function(){ show(cur + 1); });
+  document.addEventListener('keydown', function(e){
+    if(!lb.classList.contains('on')) return;
+    if(e.key === 'Escape'){ closeG(); }
+    else if(e.key === 'ArrowLeft'){ show(cur - 1); }
+    else if(e.key === 'ArrowRight'){ show(cur + 1); }
+    else if(e.key === 'Tab'){
+      var f = Array.prototype.slice.call(lb.querySelectorAll('button')).filter(function(x){ return !x.hidden; });
+      var a = document.activeElement, first = f[0], last = f[f.length - 1];
+      if(e.shiftKey && a === first){ e.preventDefault(); last.focus(); }
+      else if(!e.shiftKey && a === last){ e.preventDefault(); first.focus(); }
+    }
+  });
+  var x0 = null, y0 = null;
+  stage.addEventListener('touchstart', function(e){ x0 = e.changedTouches[0].clientX; y0 = e.changedTouches[0].clientY; }, {passive:true});
+  stage.addEventListener('touchend', function(e){
+    if(x0 === null) return;
+    var dx = e.changedTouches[0].clientX - x0, dy = e.changedTouches[0].clientY - y0; x0 = null;
+    if(Math.abs(dx) > 44 && Math.abs(dx) > Math.abs(dy) * 1.3){ show(dx < 0 ? cur + 1 : cur - 1); }
+  }, {passive:true});
+})();
+(function(){
+  /* keep anchor targets clear of the sticky header at every width */
+  var topbar = document.querySelector('.top');
+  function pad(){ document.documentElement.style.scrollPaddingTop = (topbar.offsetHeight + 16) + 'px'; }
+  pad(); window.addEventListener('resize', pad);
+
+  /* typology filter */
+  var buttons = Array.prototype.slice.call(document.querySelectorAll('.filters button'));
+  var works = Array.prototype.slice.call(document.querySelectorAll('.work'));
+  var count = document.getElementById('count');
+  buttons.forEach(function(b){
+    b.addEventListener('click', function(){
+      var f = b.getAttribute('data-f'), n = 0;
+      buttons.forEach(function(x){ x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+      works.forEach(function(w){
+        var show = f === 'all' || w.getAttribute('data-t') === f;
+        w.hidden = !show;
+        if(show){ n++; w.classList.remove('pre'); }
+      });
+      count.textContent = n + (n === 1 ? ' work' : ' works');
+    });
+  });
+
+  /* fade and rise on scroll: hide only what starts below the first screen */
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduce || !('IntersectionObserver' in window)) return;
+  var vh = window.innerHeight || 800;
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.remove('pre'); io.unobserve(e.target); }
+    });
+  }, {rootMargin:'0px 0px -6% 0px'});
+  Array.prototype.slice.call(document.querySelectorAll('.reveal')).forEach(function(el){
+    if(el.getBoundingClientRect().top > vh){ el.classList.add('pre'); io.observe(el); }
+  });
+})();
+</script>
+<p class="print-note">Printing is disabled for this portfolio. &copy; Waleed Elsayed.</p>
+<script>
+(function(){
+  /* Deterrent-level copy protection. Contact details stay copyable. */
+  function inContact(n){ if(n && n.nodeType===3) n=n.parentNode; return !!(n && n.closest && n.closest('.contact')); }
+  function selInContact(){ var s=window.getSelection&&window.getSelection(); return !!(s && s.rangeCount && !s.isCollapsed && inContact(s.anchorNode) && inContact(s.focusNode)); }
+  function stop(e){ e.preventDefault(); e.stopPropagation(); return false; }
+  document.addEventListener('contextmenu', stop, true);
+  document.addEventListener('dragstart', stop, true);
+  document.addEventListener('selectstart', function(e){ if(!inContact(e.target)) e.preventDefault(); }, true);
+  document.addEventListener('copy', function(e){ if(!selInContact()) stop(e); }, true);
+  document.addEventListener('cut', stop, true);
+  document.addEventListener('paste', stop, true);
+  Array.prototype.forEach.call(document.images, function(i){ i.draggable=false; });
+  document.getElementById('lbi').draggable=false;
+  /* Only modifier shortcuts and F12 are intercepted; Esc, arrows and Tab are never touched, so the lightbox keeps working. */
+  document.addEventListener('keydown', function(e){
+    var k=(e.key||'').toLowerCase(), mod=e.ctrlKey||e.metaKey;
+    if(k==='f12') return stop(e);
+    if(!mod) return;
+    if(e.shiftKey && (k==='i'||k==='j'||k==='c')) return stop(e);
+    if(e.altKey && (k==='i'||k==='j'||k==='u'||k==='c')) return stop(e); /* macOS devtools / view-source */
+    if(k==='s'||k==='p'||k==='u') return stop(e);
+    if(k==='c'||k==='x') { if(!selInContact()||k==='x') return stop(e); }
+    if(k==='a') return stop(e);
+  }, true);
+})();
+</script>
+<script>
+/* privacy-friendly analytics: no cookies, no IP tracking (hits.sh counters) */
+(function(){
+  if (/(^|[?&])preview([=&]|$)/.test(location.search)) return;
+  var H = 'https://hits.sh/waleed-elsayed.com/';
+  function px(name){ try { var i = new Image(); i.referrerPolicy = 'no-referrer'; i.src = H + name + '.svg?_=' + Date.now(); } catch(e){} }
+  px('views');
+  var fresh = false;
+  try { fresh = !sessionStorage.getItem('we_s'); sessionStorage.setItem('we_s','1'); } catch(e){}
+  if (fresh) {
+    px('sessions');
+    var r = document.referrer || '', ch = 'direct';
+    if (r) {
+      if (/linkedin\./i.test(r)) ch = 'linkedin';
+      else if (/google\./i.test(r)) ch = 'google';
+      else if (/(twitter\.|x\.com|t\.co)/i.test(r)) ch = 'x';
+      else ch = 'other';
+    }
+    px('ref-' + ch);
+  }
+  setInterval(function(){ if (!document.hidden) px('engagement'); }, 30000);
+  document.addEventListener('click', function(e){
+    var b = e.target && e.target.closest ? e.target.closest('.gal-btn') : null;
+    if (!b) return;
+    px('gallery');
+    var f = (b.getAttribute('data-files') || '').split(',')[0];
+    var id = f.replace(/-\d+$/, '');
+    if (id) px('gal-' + id);
+  }, true);
+})();
+</script>
+</body>
+</html>
